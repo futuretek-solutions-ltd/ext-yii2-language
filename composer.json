@@ -1,0 +1,49 @@
+{
+    "name": "futuretek/yii2-language",
+    "description": "Yii2 language support",
+    "keywords": [
+        "extension",
+        "language",
+        "yii"
+    ],
+    "type": "yii2-extension",
+    "license": "Apache-2.0",
+    "homepage": "http://www.futuretek.cz/",
+    "authors": [
+        {
+            "name": "Lukas Cerny",
+            "email": "lukas.cerny@futuretek.cz",
+            "homepage": "http://www.futuretek.cz",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/futuretek-solutions-ltd/ext-yii2-language/issues",
+        "wiki": "https://github.com/futuretek-solutions-ltd/ext-yii2-language/wiki",
+        "source": "https://github.com/futuretek-solutions-ltd/ext-yii2-language"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "ext-intl": "*",
+        "yiisoft/yii2": "^2.0.0",
+        "futuretek/yii2-migrations": "^1.0.0",
+        "futuretek/yii2-yii-shared": "^1.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "futuretek\\language\\": ""
+        }
+    },
+    "extra": {
+        "yii-config": {
+            "modules": {
+                "fts-language": {
+                    "class": "futuretek\\language\\Module"
+                }
+            },
+            "bootstrap": [
+                "fts-language"
+            ]
+        }
+    }
+}
