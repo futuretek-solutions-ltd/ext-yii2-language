@@ -22,8 +22,20 @@ There are two selectors available:
 * ```LanguageSelector::dropDown()``` - display drop-down with all enabled languages 
 * ```LanguageSelector::flagList()``` - display list of all enabled language flags
 
-Changelog
----------
+### Administration
 
-### 1.0.0
-* Initial version 
+Extension add very simple language list page with activate/deactivate option.
+
+To include the page into your controller you have to add it to `actions()` method. 
+
+```
+class LanguageController extends Controller
+{
+    public function actions()
+    {
+        return [
+            'index' => 'futuretek\language\IndexAction',
+        ];
+    }
+}
+```

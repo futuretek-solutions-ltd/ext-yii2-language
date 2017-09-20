@@ -14,4 +14,9 @@ return [
     'Selected language is not active or not exist.' => 'Zvolený jazyk není aktivní nebo neexistuje.',
     'No referrer or backUrl set.' => 'Nebyla nastavena zpětná URL ani předchozí URL.',
     'Cannot determine region from locale {locale}.' => 'Z lokality {locale} nebylo možné určit region.',
+    'Language with ID {id} not found.' => 'Jazyk s ID {id} nebyl nalezen.',
+    'Error while updating language.' => 'Došlo k chybě při aktualizaci jazyka.',
+    'Languages' => 'Jazyky',
+    'Activate' => 'Aktivovat',
+    'Deactivate' => 'Deaktivovat',
 ];
