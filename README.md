@@ -39,3 +39,13 @@ class LanguageController extends Controller
     }
 }
 ```
+
+Development
+-----------
+
+Assets are managed by [Compass](http://compass-style.org/)
+
+* While developing run `compass watch` in extension root directory
+* To compile assets for final distribution run `compass compile -e production --force` in extension root directory
+
+  

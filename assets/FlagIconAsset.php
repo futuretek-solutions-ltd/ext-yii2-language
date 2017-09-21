@@ -23,7 +23,7 @@ class FlagIconAsset extends AssetBundle
         $this->baseUrl = '@web';
 
         $this->css = [
-            'sass/flag-icon.scss',
+            'css/flag-icon.css',
         ];
 
         parent::init();
