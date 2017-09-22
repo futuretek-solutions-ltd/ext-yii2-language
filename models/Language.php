@@ -29,6 +29,7 @@ class Language extends DbModel
     public $region_name_native;
 
     private static $CACHE_LOCALE_MAP = [__NAMESPACE__, __CLASS__, 'locale_map'];
+    private static $CACHE_LANG_CODES = [__NAMESPACE__, __CLASS__, 'lang_codes'];
     private static $CACHE_LOCALE_NAME_LIST = [__NAMESPACE__, __CLASS__, 'locale_name_list'];
     private static $CACHE_ID_NAME_LIST = [__NAMESPACE__, __CLASS__, 'id_name_list'];
 
@@ -106,7 +107,6 @@ class Language extends DbModel
         return $lang === null ? null : $lang->id;
     }
 
-
     /**
      * Get language locale to id map
      *
@@ -124,6 +124,24 @@ class Language extends DbModel
         }
 
         return $cache['languages'];
+    }
+
+    /**
+     * Get language codes list
+     *
+     * @return array Language code list
+     */
+    public static function getLanguageCodes()
+    {
+        $cache = Yii::$app->cache->get(self::$CACHE_LANG_CODES);
+        if ($cache === false) {
+            $languageCodes = self::find()->select(['lang_code'])->distinct()->where(['active' => true])->asArray()->column();
+            Yii::$app->cache->set(self::$CACHE_LANG_CODES, ['language_codes' => $languageCodes]);
+
+            return $languageCodes;
+        }
+
+        return $cache['language_codes'];
     }
 
     /**
@@ -223,6 +241,7 @@ class Language extends DbModel
         Yii::$app->cache->delete(self::$CACHE_LOCALE_MAP);
         Yii::$app->cache->delete(self::$CACHE_LOCALE_NAME_LIST);
         Yii::$app->cache->delete(self::$CACHE_ID_NAME_LIST);
+        Yii::$app->cache->delete(self::$CACHE_LANG_CODES);
 
         parent::afterSave($insert, $changedAttributes);
     }
