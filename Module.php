@@ -28,6 +28,19 @@ class Module extends YiiModule implements BootstrapInterface
     public $defaultRoute = 'language';
 
     /**
+     * @var string Cookie domain
+     */
+    public $cookieDomain = '';
+    /**
+     * @var string Cookie name
+     */
+    public $cookieName = 'language';
+    /**
+     * @var int Expire after (in seconds). If set to null, cookie will expire after closing the browser. Default expiry time is one year.
+     */
+    public $cookieExpire = 31536000;
+
+    /**
      * @inheritdoc
      */
     public function bootstrap($app)

@@ -3,6 +3,7 @@
 namespace futuretek\language\controllers;
 
 use futuretek\language\models\Language;
+use futuretek\language\Module;
 use Yii;
 use yii\base\InvalidCallException;
 use yii\base\InvalidParamException;
@@ -17,6 +18,8 @@ use yii\web\Cookie;
  * @author  Lukas Cerny <lukas.cerny@futuretek.cz>
  * @license Apache-2.0
  * @link    http://www.futuretek.cz
+ *
+ * @property Module $module
  */
 class LanguageController extends Controller
 {
@@ -43,9 +46,10 @@ class LanguageController extends Controller
         Yii::$app->language = $language;
 
         $languageCookie = new Cookie([
-            'name' => 'language',
+            'name' => $this->module->cookieName,
+            'domain' => $this->module->cookieDomain,
             'value' => $language,
-            'expire' => time() + 31536000, //One year
+            'expire' => $this->module->cookieExpire === null ? 0 : time() + $this->module->cookieExpire,
         ]);
         Yii::$app->response->cookies->add($languageCookie);
 
