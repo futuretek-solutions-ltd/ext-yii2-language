@@ -45,7 +45,7 @@ class Module extends YiiModule implements BootstrapInterface
      */
     public function bootstrap($app)
     {
-        if ($app instanceof Application) {
+        if ($app instanceof Application || (defined('YII_ENV_TEST') && YII_ENV_TEST)) {
             return;
         }
         $supportedLanguages = Language::getLocales();
