@@ -7,6 +7,7 @@ class m150109_101210_init extends FtsMigration
 {
     public function safeUp()
     {
+        $isMssql = Yii::$app->db->driverName == 'sqlsrv';
         Yii::$app->db->createCommand()->checkIntegrity(false)->execute();
 
         if (Yii::$app->db->schema->getTableSchema('language') !== null) {
@@ -22,7 +23,7 @@ class m150109_101210_init extends FtsMigration
                 'lang_name' => $this->string(64)->notNull(),
                 'region_code' => $this->string(3)->notNull(),
                 'region_name' => $this->string(64)->notNull(),
-                'active' => $this->boolean()->notNull()->defaultValue(false),
+                'active' => $this->boolean()->notNull()->defaultValue($isMssql ? 0 : false),
                 'created_at' => $this->dateTime(),
                 'updated_at' => $this->dateTime(),
             ]
